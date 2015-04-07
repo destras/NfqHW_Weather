@@ -1,0 +1,9 @@
+services:
+    yahoo_weather:
+        class: Nfq\WeatherBundle\Classes\YahooWeatherService
+        arguments: [location]
+
+    nfq_weather:
+        class: Nfq\WeatherBundle\Classes\WeatherLoader
+        arguments: ['@yahoo_weather']
+
