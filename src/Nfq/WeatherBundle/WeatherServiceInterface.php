@@ -8,8 +8,7 @@
 namespace Nfq\WeatherBundle\Classes;
 
 
-interface WeatherServiceInterface {
-
-    public function getWeather($location);
-
+interface WeatherServiceInterface
+{
+    public function getWeatherForLocation(Location $location);
 }
