@@ -1,34 +1,33 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: destas
- * Date: 4/8/15
- * Time: 1:04 PM
- */
 
 namespace Nfq\WeatherBundle;
 
 /**
  * Class YahooWeatherParser
  *
- * @package Nfq\WeatherBundle\Classes
+ * Class parse data from Yahoo Weathers API's json file
+ *
+ * @category Yahoo_Weather_Service
+ * @package  Nfq\WeatherBundle
+ * @author   Valdemar Karasevic <valdemar.karasevic@gmail.com>
  */
-
 class YahooWeatherParser
 {
-
+    /**
+     * Function parse data from Yahoo Weathers API's json file
+     * and return data about current weather in html.
+     *
+     * @param $json $json it's json file from Yahoo Weather API
+     *
+     * @return mixed
+     */
     public function parseWeather($json)
     {
         $phpObj = json_decode($json);
+        $string = $phpObj->{'query'}->{'results'}
+            ->{'channel'}->{'item'}->{'description'};
+        $weatherNow = preg_split('/Forecast/', $string);
 
-        if ($phpObj->{'query'}->{'results'} !== null) {
-            $string = $phpObj->{'query'}->{'results'}
-                ->{'channel'}->{'item'}->{'description'};
-            $weather_now = preg_split('/Forecast/', $string);
-
-            return $weather_now[0];
-        } else {
-            return 'Error, wrong coordinates';
-        }
+        return $weatherNow[0];
     }
 }

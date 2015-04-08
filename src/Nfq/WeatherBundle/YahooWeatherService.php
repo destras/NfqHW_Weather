@@ -1,35 +1,54 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: destas
- * Date: 4/3/15
- * Time: 1:09 PM
- */
 
 namespace Nfq\WeatherBundle;
 
+use Buzz\Browser;
 
+/**
+ * Class YahooWeatherService
+ *
+ * Class gets current weather data from Yahoo Weathers API's
+ *
+ * @category YahooWeatherService
+ * @package  Nfq\WeatherBundle
+ * @author   Valdemar Karasevic <valdemar.karasevic@gmail.com>
+
+ */
 class YahooWeatherService implements WeatherServiceInterface
 {
-    public function __construct(YahooWeatherParser $parser, HttpClient $browser)
+    /**
+     * Construct object from injected YahooWeatherParser and Browser objects
+     *
+     * @param YahooWeatherParser $parser
+     * @param Browser $browser
+     */
+    public function __construct(YahooWeatherParser $parser, Browser $browser)
     {
         $this->parser = $parser;
         $this->browser = $browser;
     }
 
-    public function getWeatherForLocation (Location $location)
+    /**
+     * Get current weather for passed Location by latitude and longitude
+     *
+     * @param Location $location $location is an object with latitude and longitude parameters
+     *
+     * @return mixed return current weather
+     */
+    public function getWeatherForLocation(Location $location)
     {
-        $BASE_URL = "http://query.yahooapis.com/v1/public/yql";
-        $yql_query = 'select item.description from weather.forecast
+        $baseUrl = "http://query.yahooapis.com/v1/public/yql";
+        $yqlQuery = 'select item.description from weather.forecast
             where woeid in (select woeid from geo.placefinder
             where text="'.$location->getLongitude().','.$location->getLatitude().'"
             AND gflags = "R")AND u="c"';
-        $yql_query_url = $BASE_URL . "?q=" . urlencode($yql_query) . "&format=json";
+        $yqlQueryUrl = $baseUrl . "?q=" . urlencode($yqlQuery) . "&format=json";
 
-        $json = $this->browser->httpClient($yql_query_url);
+        $response = $this->browser->get($yqlQueryUrl);
+        $json = $response->getContent();
 
-        $weather_now = $this->parser->parseWeather($json);
+        $weatherNow = $this->parser->parseWeather($json);
 
-        return $weather_now;
+        return $weatherNow;
     }
 }

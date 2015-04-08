@@ -3,17 +3,13 @@ services:
         class: Nfq\WeatherBundle\Location
         arguments: [longitude, latitude]
 
-    http_client:
-        class: Nfq\WeatherBundle\HttpClient
-        arguments: ['@buzz']
-
     yahoo_weather_parser:
         class: Nfq\WeatherBundle\YahooWeatherParser
         arguments: []
 
     yahoo_weather:
         class: Nfq\WeatherBundle\YahooWeatherService
-        arguments: ['@yahoo_weather_parser', '@http_client']
+        arguments: ['@yahoo_weather_parser', '@buzz']
 
     nfq_weather:
         class: Nfq\WeatherBundle\WeatherLoader
