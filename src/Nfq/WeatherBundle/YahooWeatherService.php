@@ -6,7 +6,7 @@
  * Time: 1:09 PM
  */
 
-namespace Nfq\WeatherBundle\Classes;
+namespace Nfq\WeatherBundle;
 
 
 class YahooWeatherService implements WeatherServiceInterface

@@ -6,7 +6,7 @@
  * Time: 11:27 AM
  */
 
-namespace Nfq\WeatherBundle\Classes;
+namespace Nfq\WeatherBundle;
 
 
 class WeatherLoader

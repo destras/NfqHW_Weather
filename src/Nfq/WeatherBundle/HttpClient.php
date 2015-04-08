@@ -6,7 +6,7 @@
  * Time: 2:12 PM
  */
 
-namespace Nfq\WeatherBundle\Classes;
+namespace Nfq\WeatherBundle;
 
 
 

@@ -6,7 +6,7 @@
  * Time: 1:04 PM
  */
 
-namespace Nfq\WeatherBundle\Classes;
+namespace Nfq\WeatherBundle;
 
 /**
  * Class YahooWeatherParser

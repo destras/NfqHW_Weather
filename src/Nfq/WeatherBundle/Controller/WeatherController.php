@@ -14,8 +14,6 @@ class WeatherController extends Controller
 {
     public function indexAction()
     {
-        $weatherService = $this->get('nfq_weather')->getWeather('Vilnius');
-        echo $weatherService;
 
         return $this->render('NfqWeatherBundle:Default:index.html.twig');
     }
