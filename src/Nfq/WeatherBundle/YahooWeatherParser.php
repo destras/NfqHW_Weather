@@ -16,12 +16,19 @@ namespace Nfq\WeatherBundle;
 
 class YahooWeatherParser
 {
+
     public function parseWeather($json)
     {
         $phpObj = json_decode($json);
-        $string = $phpObj->{'query'}->{'results'}
-            ->{'channel'}->{'item'}->{'description'};
-        $weather_now = preg_split('/Forecast/', $string);
-        return $weather_now[0];
+
+        if ($phpObj->{'query'}->{'results'} !== null) {
+            $string = $phpObj->{'query'}->{'results'}
+                ->{'channel'}->{'item'}->{'description'};
+            $weather_now = preg_split('/Forecast/', $string);
+
+            return $weather_now[0];
+        } else {
+            return 'Error, wrong coordinates';
+        }
     }
 }

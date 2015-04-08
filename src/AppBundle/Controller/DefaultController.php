@@ -13,11 +13,12 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $location = $this->get('location');
-        $location->__construct(54.6833333, 25.3166667);
+        $location->__construct(54.24, 54.24);
         $weatherService = $this->get('nfq_weather')
             ->getWeatherForLocation($location);
-        echo $weatherService;
 
-        return $this->render('default/index.html.twig');
+
+        return $this->
+            render('default/index.html.twig', array('weather' => $weatherService));
     }
 }
