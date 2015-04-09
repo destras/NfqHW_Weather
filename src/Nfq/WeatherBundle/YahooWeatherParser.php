@@ -17,9 +17,9 @@ class YahooWeatherParser
      * Function parse data from Yahoo Weathers API's json file
      * and return data about current weather in html.
      *
-     * @param $json $json it's json file from Yahoo Weather API
+     * @param string $json it's json file from Yahoo Weather API
      *
-     * @return mixed
+     * @return string
      */
     public function parseWeather($json)
     {

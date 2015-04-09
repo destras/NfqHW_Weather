@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Nfq\WeatherBundle\Location;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -12,8 +13,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $location = $this->get('location');
-        $location->__construct(54.24, 54.24);
+        $location = new Location(54.41, 25.19);
         $weatherService = $this->get('nfq_weather')
             ->getWeatherForLocation($location);
 

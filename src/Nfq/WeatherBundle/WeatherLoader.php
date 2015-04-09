@@ -22,9 +22,9 @@ class WeatherLoader
     }
 
     /**
-     * @param Location $location $location is object with longitude and latitude parameters
+     * @param Location $location it's object with longitude and latitude parameters
      *
-     * @return mixed return current weather from injected weather service
+     * @return string return current weather from injected weather service
      */
     public function getWeatherForLocation(Location $location)
     {

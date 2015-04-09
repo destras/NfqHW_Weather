@@ -33,7 +33,7 @@ class YahooWeatherService implements WeatherServiceInterface
      *
      * @param Location $location $location is an object with latitude and longitude parameters
      *
-     * @return mixed return current weather
+     * @return string return current weather
      */
     public function getWeatherForLocation(Location $location)
     {

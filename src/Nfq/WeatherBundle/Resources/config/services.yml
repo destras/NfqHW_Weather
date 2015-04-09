@@ -1,8 +1,4 @@
 services:
-    location:
-        class: Nfq\WeatherBundle\Location
-        arguments: [longitude, latitude]
-
     yahoo_weather_parser:
         class: Nfq\WeatherBundle\YahooWeatherParser
         arguments: []

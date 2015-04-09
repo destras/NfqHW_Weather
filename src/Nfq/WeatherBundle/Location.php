@@ -19,8 +19,8 @@ class Location
     /**
      * Construct object from longitude, latitude parameters
      *
-     * @param $longitude $longitude parameter for longitude coordinates (expl. 54.15)
-     * @param $latitude $latitude parameter for latitude coordinates (expl. 54.15)
+     * @param float $longitude parameter for longitude coordinates (expl. 54.15)
+     * @param float $latitude parameter for latitude coordinates (expl. 54.15)
      */
     public function __construct($longitude, $latitude)
     {
@@ -31,7 +31,7 @@ class Location
     /**
      * Getter for longitude
      *
-     * @return mixed longitude coordinates (expl. 54.15)
+     * @return float longitude coordinates (expl. 54.15)
      */
     public function getLongitude()
     {
@@ -41,7 +41,7 @@ class Location
     /**
      * Getter for latitude
      *
-     * @return mixed latitude coordinates (expl. 54.15)
+     * @return float latitude coordinates (expl. 54.15)
      */
     public function getLatitude()
     {
